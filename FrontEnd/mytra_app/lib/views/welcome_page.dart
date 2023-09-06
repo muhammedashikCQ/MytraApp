@@ -59,7 +59,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                 fontWeight: FontWeight.w300,
                                 color: Colors.white))),
                     const SizedBox(
-                      height: 200,
+                      height: 150,
                     ),
                   ],
                 ),
