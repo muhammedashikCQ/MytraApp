@@ -34,7 +34,5 @@ namespace MytraApp.Request.Query.User.UserLogin
 
         }
 
-
-
     }   
 }         
