@@ -16,15 +16,14 @@ namespace MytraRepository.Configurations
             builder.Property(x => x.UserName)
                 .IsRequired()
                 .HasMaxLength(50);
-            builder.Property(x=>x.Password)
+            builder.Property(x => x.Password)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(50);             
             builder.Property(x=>x.MailId)
                 .IsRequired()
                 .HasMaxLength(100);
             builder.HasIndex(x=>x.MailId)
-                .IsUnique();
-       
+                .IsUnique();       
         }
     }
 }
