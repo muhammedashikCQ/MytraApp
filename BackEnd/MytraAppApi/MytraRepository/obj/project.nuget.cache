@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HfIYyJv5y4hUvLaQPxvcJkrAGRK8C9Sk6lQtR1Yameg2MUiPzl5QU84fCfQdvHgIU7NnHTdnZZ6zP/rKBcPW2A==",
+  "dgSpecHash": "E6jSLsetsFro8ZbXKJbtPyZ+KVaa/UP3J/R4oPR9hztvCj0ETpx5o1j8rIjTehS3/cL+AQy+casOMhzqKzN/yA==",
   "success": true,
-  "projectFilePath": "C:\\Repository\\training\\MytraApp\\MytraAppApi\\MytraRepository\\MytraRepository.csproj",
+  "projectFilePath": "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraRepository\\MytraRepository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\CQ-Ashik\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\CQ-Ashik\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

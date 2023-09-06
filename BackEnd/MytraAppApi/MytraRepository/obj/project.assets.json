@@ -3977,11 +3977,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Repository\\training\\MytraApp\\MytraAppApi\\MytraRepository\\MytraRepository.csproj",
+      "projectUniqueName": "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraRepository\\MytraRepository.csproj",
       "projectName": "MytraRepository",
-      "projectPath": "C:\\Repository\\training\\MytraApp\\MytraAppApi\\MytraRepository\\MytraRepository.csproj",
+      "projectPath": "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraRepository\\MytraRepository.csproj",
       "packagesPath": "C:\\Users\\CQ-Ashik\\.nuget\\packages\\",
-      "outputPath": "C:\\Repository\\training\\MytraApp\\MytraAppApi\\MytraRepository\\obj\\",
+      "outputPath": "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraRepository\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\CQ-Ashik\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3998,8 +3998,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Repository\\training\\MytraApp\\MytraAppApi\\MytraModel\\MytraModel.csproj": {
-              "projectPath": "C:\\Repository\\training\\MytraApp\\MytraAppApi\\MytraModel\\MytraModel.csproj"
+            "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraModel\\MytraModel.csproj": {
+              "projectPath": "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraModel\\MytraModel.csproj"
             }
           }
         }

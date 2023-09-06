@@ -3955,11 +3955,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Repository\\training\\MytraApp\\MytraAppApi\\MytraModel\\MytraModel.csproj",
+      "projectUniqueName": "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraModel\\MytraModel.csproj",
       "projectName": "MytraModel",
-      "projectPath": "C:\\Repository\\training\\MytraApp\\MytraAppApi\\MytraModel\\MytraModel.csproj",
+      "projectPath": "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraModel\\MytraModel.csproj",
       "packagesPath": "C:\\Users\\CQ-Ashik\\.nuget\\packages\\",
-      "outputPath": "C:\\Repository\\training\\MytraApp\\MytraAppApi\\MytraModel\\obj\\",
+      "outputPath": "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraModel\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\CQ-Ashik\\AppData\\Roaming\\NuGet\\NuGet.Config",
