@@ -15,8 +15,6 @@ namespace MytraApp.Request.Query.User.GetUserQuery
         public async Task<List<Models.User>> Handle(GetAllUserQuery query,CancellationToken cancellationToken)
         {
             return _context.User.ToList();
-        }
-
-        
+        }  
     }
 }

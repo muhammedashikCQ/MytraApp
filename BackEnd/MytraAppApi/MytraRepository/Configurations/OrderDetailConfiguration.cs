@@ -27,7 +27,6 @@ namespace MytraRepository.Configurations
                 .HasForeignKey(x => x.OrderId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-
         }
     }
 }

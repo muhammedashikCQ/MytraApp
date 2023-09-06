@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MytraApp.Request.Command.User.AddUserCommand;
 using MytraApp.Request.Query.User.GetUserQuery;
+using MytraApp.Request.Query.User.UserLogin;
 
 namespace MytraApp.Controllers
 {
@@ -15,14 +16,36 @@ namespace MytraApp.Controllers
             _mediator = mediator;
         }
         [HttpPost("AddUser")]
-        public async Task<ActionResult<bool>> AddUser([FromBody]AddUserCommand addUserCommand)
+        public async Task<ActionResult<string>> AddUser([FromBody]AddUserCommand addUserCommand)
         {
-             return Ok(await _mediator.Send(addUserCommand));
+            try
+            {
+                return Ok(await _mediator.Send(addUserCommand));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
-        //[HttpGet("GetAllUSer")]
-        //public async Task<ActionResult<bool>> GetAllUser([FromQuery]GetAllUserQuery getAllUserQuery)
-        //{
-        //    return Ok(await _mediator.Send(getAllUserQuery));
-        //}
+       
+        [HttpGet("GetAllUSer")]
+        public async Task<ActionResult<bool>> GetAllUser([FromQuery] GetAllUserQuery getAllUserQuery)
+        {
+            return Ok(await _mediator.Send(getAllUserQuery));
+        }
+        [HttpPost("LoginUser")]
+        public async Task<ActionResult<bool>> UserLogin([FromQuery] UserLoginQuery userLoginQuery)
+        {
+            try
+            {
+                return Ok(await _mediator.Send(userLoginQuery));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
+        }
     }
 }
