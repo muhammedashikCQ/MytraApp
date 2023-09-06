@@ -14,7 +14,8 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   bool isClickedLogin = false;
   bool isClickedSignUp = false;
@@ -81,18 +82,17 @@ class _SignUpPageState extends State<SignUpPage> {
                               const SizedBox(
                                 height: 5,
                               ),
+                              isClickedLogin?
                               Container(
                                 height: 2,
                                 width: 31,
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                  style: isClickedLogin
-                                      ? BorderStyle.solid
-                                      : BorderStyle.none,
-                                  color: Colors.white,
-                                ))),
-                              ),
+                                color: Colors.white,
+                              ):
+                              const SizedBox(
+                                height: 2,
+                                width: 31,
+                              )
+
                             ],
                           )),
                       const SizedBox(
@@ -132,37 +132,57 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                             ],
                           )),
-                      const SizedBox(
-                        width: 145,
-                      ),
-                      Image.asset(
-                        'assets/images/profile.png',
-                        width: 50,
-                        height: 50,
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(
+                          "assets/images/ppf.svg",
+                          width: 50,
+                          height: 50,
+                        ),
                       )
                     ],
                   ),
                   const SizedBox(
                     height: 136,
                   ),
-                  const Text.rich(TextSpan(
-                      style: TextStyle(color: Colors.white),
+                  const SizedBox(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TextSpan(
-                          text: 'Hello ',
-                          style: TextStyle(
-                              fontSize: 35,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w300),
+                        Text.rich(TextSpan(
+                            style: TextStyle(color: Colors.white),
+                            children: [
+                              TextSpan(
+                                text: 'Hello ',
+                                style: TextStyle(
+                                    fontSize: 35,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              TextSpan(
+                                text: 'Beautiful,',
+                                style: TextStyle(
+                                    fontSize: 35,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ])),
+                        SizedBox(
+                          height: 5,
                         ),
-                        TextSpan(
-                          text: 'Beautiful,',
-                          style: TextStyle(
-                              fontSize: 35,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ])),
+                        SizedBox(
+                            width: 239,
+                            // height: 36,
+                            child: Text(
+                                'Enter your informations below or login with a social account',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.white))),
+                      ],
+                    ),
+                  ),
                   const SizedBox(
                     height: 50,
                   ),
@@ -230,7 +250,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   const SizedBox(
-                    height: 172,
+                    height: 120,
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -244,24 +264,18 @@ class _SignUpPageState extends State<SignUpPage> {
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white),
                           )),
-                      const SizedBox(
-                        width: 58,
-                      ),
-                      SizedBox(
-                        height: 60,
-                        width: 127,
-                        child: FloatingActionButton(
-                            onPressed: () {},
-                            backgroundColor: const Color(0xffEA3D3D),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            child: SizedBox(
-                              child: 
-                              IconButton(
+                      const Spacer(),
+                      InkWell(
+                        onTap: () {},
+                        child: Container(
+                            height: 60,
+                            width: 127,
+                            decoration:
+                                const BoxDecoration(color: Colors.red),
+                            child: IconButton(
                                 onPressed: () {},
-                                icon: SvgPicture.asset("assets/images/arrowButton.svg")
-                              ),
-                            )),
+                                icon: SvgPicture.asset(
+                                    "assets/images/arrowButton.svg"))),
                       ),
                     ],
                   ),
