@@ -1,0 +1,17 @@
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\bin\Debug\net7.0\MytraRepository.deps.json
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\bin\Debug\net7.0\MytraRepository.runtimeconfig.json
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\bin\Debug\net7.0\MytraRepository.dll
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\bin\Debug\net7.0\MytraRepository.pdb
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\bin\Debug\net7.0\MytraModel.dll
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\bin\Debug\net7.0\MytraModel.pdb
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\obj\Debug\net7.0\MytraRepository.csproj.AssemblyReference.cache
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\obj\Debug\net7.0\MytraRepository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\obj\Debug\net7.0\MytraRepository.AssemblyInfoInputs.cache
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\obj\Debug\net7.0\MytraRepository.AssemblyInfo.cs
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\obj\Debug\net7.0\MytraRepository.csproj.CoreCompileInputs.cache
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\obj\Debug\net7.0\MytraRepository.csproj.CopyComplete
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\obj\Debug\net7.0\MytraRepository.dll
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\obj\Debug\net7.0\refint\MytraRepository.dll
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\obj\Debug\net7.0\MytraRepository.pdb
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\obj\Debug\net7.0\MytraRepository.genruntimeconfig.cache
+C:\Repository\training\MytraApp\MytraAppApi\MytraRepository\obj\Debug\net7.0\ref\MytraRepository.dll
