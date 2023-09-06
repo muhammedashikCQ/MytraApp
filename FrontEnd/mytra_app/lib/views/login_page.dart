@@ -55,6 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       InkWell(
                           onTap: () {
@@ -130,18 +131,19 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ],
                           )),
-                      const SizedBox(
-                        width: 145,
-                      ),
-                      Image.asset(
-                        'assets/images/Rectangle.png',
-                        width: 50,
-                        height: 50,
+                      const Spacer(),
+                      ClipRRect(
+                        child: Image.asset(
+                          'assets/images/pf.png',
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
                       )
                     ],
                   ),
                   const SizedBox(
-                    height: 136,
+                    height: 100,
                   ),
                   const SizedBox(
                     child: Text('Welcome Back,',
@@ -195,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(
-                    height: 247,
+                    height: 290,
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -209,9 +211,7 @@ class _LoginPageState extends State<LoginPage> {
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white),
                           )),
-                      const SizedBox(
-                        width: 50,
-                      ),
+                      const Spacer(),
                       SizedBox(
                         height: 60,
                         width: 127,
@@ -220,11 +220,9 @@ class _LoginPageState extends State<LoginPage> {
                             backgroundColor: const Color(0xffF2C94C),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            child: SizedBox(
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: SvgPicture.asset('assets/images/arrowL.svg')
-                              ),
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: SvgPicture.asset('assets/images/arrowL.svg')
                             )),
                       ),
                     ],
