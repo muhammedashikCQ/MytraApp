@@ -19,10 +19,10 @@ namespace MytraApp.Controllers
         {
              return Ok(await _mediator.Send(addUserCommand));
         }
-        //[HttpGet("GetAllUSer")]
-        //public async Task<ActionResult<bool>> GetAllUser([FromQuery]GetAllUserQuery getAllUserQuery)
-        //{
-        //    return Ok(await _mediator.Send(getAllUserQuery));
-        //}
+        [HttpGet("GetAllUSer")]
+        public async Task<ActionResult<bool>> GetAllUser([FromQuery] GetAllUserQuery getAllUserQuery)
+        {
+            return Ok(await _mediator.Send(getAllUserQuery));
+        }
     }
 }
