@@ -26,3 +26,17 @@ C:\MytraAppRepository\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\r
 C:\MytraAppRepository\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\MytraModel.pdb
 C:\MytraAppRepository\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\MytraModel.genruntimeconfig.cache
 C:\MytraAppRepository\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\ref\MytraModel.dll
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\bin\Debug\net7.0\MytraModel.deps.json
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\bin\Debug\net7.0\MytraModel.runtimeconfig.json
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\bin\Debug\net7.0\MytraModel.dll
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\bin\Debug\net7.0\MytraModel.pdb
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\MytraModel.csproj.AssemblyReference.cache
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\MytraModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\MytraModel.AssemblyInfoInputs.cache
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\MytraModel.AssemblyInfo.cs
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\MytraModel.csproj.CoreCompileInputs.cache
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\MytraModel.dll
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\refint\MytraModel.dll
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\MytraModel.pdb
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\MytraModel.genruntimeconfig.cache
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraModel\obj\Debug\net7.0\ref\MytraModel.dll

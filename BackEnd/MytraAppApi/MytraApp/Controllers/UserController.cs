@@ -15,7 +15,7 @@ namespace MytraApp.Controllers
         {
             _mediator = mediator;
         }
-        [HttpPost("AddUser")]
+        [HttpPost("UserSignUp")]
         public async Task<ActionResult<string>> AddUser([FromBody]AddUserCommand addUserCommand)
         {
             try
@@ -34,7 +34,7 @@ namespace MytraApp.Controllers
         {
             return Ok(await _mediator.Send(getAllUserQuery));
         }
-        [HttpPost("LoginUser")]
+        [HttpPost("UserLogin")]
         public async Task<ActionResult<bool>> UserLogin([FromQuery] UserLoginQuery userLoginQuery)
         {
             try
