@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Diagnostics.Eventing.Reader;
 using Microsoft.EntityFrameworkCore;
 using MytraModel.Models;
+using Microsoft.Identity.Client;
 
 namespace MytraApp.Request.Command.User.AddUserCommand
 {
@@ -17,10 +18,13 @@ namespace MytraApp.Request.Command.User.AddUserCommand
         }
         public async Task<string> Handle(AddUserCommand command, CancellationToken cancellationToken)
         {
-            Models.User user = new()
+            Models.User user = new Models.User();
+            if (command.UserName != "")
             {
-                UserName = command.UserName
-            };
+                user.UserName = command.UserName;
+            }
+            else throw new Exception("Username Cannot be empty");
+            
 
             var pattern = @"^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
             var regex=new Regex(pattern);
@@ -32,11 +36,11 @@ namespace MytraApp.Request.Command.User.AddUserCommand
             else throw new Exception("EmailId Invalid");
 
 
-            if (command.Password.Length > 8)
+            if (command.Password.Length >= 8)
             {
                 user.Password = command.Password;
             }
-            else throw new Exception("Password must contain charecters greater than eight");
+            else throw new Exception("Password must contain atleast eight characters");
 
             bool isEmailExist = await _context.User.AnyAsync(x => x.MailId == command.MailId);
             if (isEmailExist)
