@@ -12,7 +12,6 @@ class SignUpInPage extends StatefulWidget {
   @override
   State<SignUpInPage> createState() => _SignUpInPageState();
 }
-// testing
 
 class _SignUpInPageState extends State<SignUpInPage> {
   final UserSignUpController userSignUpController =
