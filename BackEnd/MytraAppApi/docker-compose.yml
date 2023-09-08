@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+ business-api:
+    image: ${DOCKER_REGISTRY-}mytraapp
+    build:
+      context: .
+      # dockerfile: MytraApp/Dockerfile
+    ports:
+      - 5200:80

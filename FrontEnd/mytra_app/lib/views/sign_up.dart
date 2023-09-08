@@ -14,8 +14,8 @@ class SignUpInPage extends StatefulWidget {
 }
 
 class _SignUpInPageState extends State<SignUpInPage> {
-  final UserSignUpController userSignUpController = Get.put(UserSignUpController());
-
+  final UserSignUpController userSignUpController =
+      Get.put(UserSignUpController());
   int contentClick = 0;
 
   @override
@@ -121,14 +121,14 @@ class _SignUpInPageState extends State<SignUpInPage> {
                             ],
                           )),
                       const Spacer(),
-                      IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(
-                          "assets/images/ppf.svg",
-                          width: 50,
-                          height: 50,
-                        ),
-                      )
+                      // IconButton(
+                      //   onPressed: () {},
+                      //   icon: SvgPicture.asset(
+                      //     "assets/images/ppf.svg",
+                      //     width: 50,
+                      //     height: 50,
+                      //   ),
+                      // )
                     ],
                   ),
                   const SizedBox(
@@ -138,7 +138,7 @@ class _SignUpInPageState extends State<SignUpInPage> {
                   contentClick == 0
                       ? const SignUpWidget()
                       : const LoginPageWidget(),
-                      
+
                   contentClick == 0
                       ? Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -152,16 +152,36 @@ class _SignUpInPageState extends State<SignUpInPage> {
                                       fontWeight: FontWeight.w500,
                                       color: Colors.white),
                                 )),
-                            const SizedBox(width: 60,),
+                            const SizedBox(
+                              width: 60,
+                            ),
                             SizedBox(
                               height: 70,
                               width: 150,
                               child: IconButton(
+                                  //signup submit button
                                   onPressed: () {
-                                    userSignUpController.controllerUserSignUp(userNameController.text,emailController.text,passwordController.text);
-                                    setState(() {
-                                      contentClick = 1;
-                                    });
+                                    // print(passwordController.text);
+                                    // userSignUpController.isLoadingS=false as RxBool;
+                                    // print(userSignUpController.isLoadingS);
+                                    if ((passwordController.text ==
+                                        confirmPasswordController.text)) {
+                                      userSignUpController.controllerUserSignUp(
+                                          userNameController.text,
+                                          emailController.text,
+                                          passwordController.text);
+                                      // print(userSignUpController.isLoadingS);
+                                      if (userSignUpController
+                                          .isLoadingS.isFalse) {
+                                        setState(() {
+                                          contentClick = 1;
+                                        });
+                                      }
+                                    } else {
+                                      Get.snackbar(
+                                          "ERROR", "Password doesnot match",
+                                          backgroundColor: Colors.redAccent);
+                                    }
                                   },
                                   icon: SvgPicture.asset(
                                       "assets/images/arrowButton.svg")),
@@ -182,13 +202,19 @@ class _SignUpInPageState extends State<SignUpInPage> {
                                       color: Colors.white),
                                 )),
                             // const Spacer(),
-                            const SizedBox(width: 60,),
+                            const SizedBox(
+                              width: 60,
+                            ),
                             SizedBox(
                               height: 70,
                               width: 150,
                               child: IconButton(
-                                  onPressed: () {
-
+                                  //login submit button
+                                  onPressed: () async {
+                                    userSignUpController.controllerUserLogin(
+                                      loginEmailController.text,
+                                      loginPasswordController.text,
+                                    );
                                   },
                                   icon: SvgPicture.asset(
                                       'assets/images/arrowL.svg')),

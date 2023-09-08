@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-  final TextEditingController userNameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
 
-  // int contentClick = 0;
+final TextEditingController userNameController = TextEditingController();
+final TextEditingController emailController = TextEditingController();
+final TextEditingController passwordController = TextEditingController();
+final TextEditingController confirmPasswordController = TextEditingController();
+
+// int contentClick = 0;
 
 class SignUpWidget extends StatelessWidget {
   const SignUpWidget({super.key});
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +125,7 @@ class SignUpWidget extends StatelessWidget {
             controller: confirmPasswordController,
             style: const TextStyle(color: Colors.white),
             decoration: const InputDecoration(
-              hintText: 'Password again',
+              hintText: 'Confirm Password',
               hintStyle: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w400,
@@ -144,10 +142,7 @@ class SignUpWidget extends StatelessWidget {
         const SizedBox(
           height: 75,
         ),
-        
       ],
     );
   }
-  }
-
-
+}

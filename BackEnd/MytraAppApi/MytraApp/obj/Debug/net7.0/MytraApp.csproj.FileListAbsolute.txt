@@ -244,3 +244,4 @@ C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\Mytr
 C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraApp\obj\Debug\net7.0\MytraApp.pdb
 C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraApp\obj\Debug\net7.0\MytraApp.genruntimeconfig.cache
 C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraApp\obj\Debug\net7.0\ref\MytraApp.dll
+C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraApp\bin\Debug\net7.0\launchSettings.json
