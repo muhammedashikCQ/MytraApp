@@ -15,7 +15,7 @@ namespace MytraApp.Controllers
         {
             _mediator = mediator;
         }
-        [HttpPost("AddUser")]
+        [HttpPost("UserSignUp")]
         public async Task<ActionResult<string>> AddUser([FromBody]AddUserCommand addUserCommand)
         {
             try

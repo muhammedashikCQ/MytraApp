@@ -3972,19 +3972,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CQ-Ashik\\.nuget\\packages\\": {}
+    "C:\\Users\\CQ-Aisha\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraRepository\\MytraRepository.csproj",
+      "projectUniqueName": "C:\\Users\\CQ-Aisha\\source\\repos\\MytraAppProject\\MytraApp\\BackEnd\\MytraAppApi\\MytraRepository\\MytraRepository.csproj",
       "projectName": "MytraRepository",
-      "projectPath": "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraRepository\\MytraRepository.csproj",
-      "packagesPath": "C:\\Users\\CQ-Ashik\\.nuget\\packages\\",
-      "outputPath": "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraRepository\\obj\\",
+      "projectPath": "C:\\Users\\CQ-Aisha\\source\\repos\\MytraAppProject\\MytraApp\\BackEnd\\MytraAppApi\\MytraRepository\\MytraRepository.csproj",
+      "packagesPath": "C:\\Users\\CQ-Aisha\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\CQ-Aisha\\source\\repos\\MytraAppProject\\MytraApp\\BackEnd\\MytraAppApi\\MytraRepository\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\CQ-Ashik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\CQ-Aisha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3998,8 +3998,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraModel\\MytraModel.csproj": {
-              "projectPath": "C:\\MytraAppRepository\\MytraApp\\BackEnd\\MytraAppApi\\MytraModel\\MytraModel.csproj"
+            "C:\\Users\\CQ-Aisha\\source\\repos\\MytraAppProject\\MytraApp\\BackEnd\\MytraAppApi\\MytraModel\\MytraModel.csproj": {
+              "projectPath": "C:\\Users\\CQ-Aisha\\source\\repos\\MytraAppProject\\MytraApp\\BackEnd\\MytraAppApi\\MytraModel\\MytraModel.csproj"
             }
           }
         }
