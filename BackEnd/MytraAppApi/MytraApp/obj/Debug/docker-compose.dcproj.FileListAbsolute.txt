@@ -1,1 +1,0 @@
-C:\Users\CQ-Aisha\source\repos\MytraAppProject\MytraApp\BackEnd\MytraAppApi\MytraApp\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
