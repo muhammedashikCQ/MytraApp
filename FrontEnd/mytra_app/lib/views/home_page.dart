@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mytraapp/widgets/icon_container.dart';
 
-import 'widgets/bottom_container.dart';
+import '../widgets/bottom_container.dart';
+import '../widgets/icon_container.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
