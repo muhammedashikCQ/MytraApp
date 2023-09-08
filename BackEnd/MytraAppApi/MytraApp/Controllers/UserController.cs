@@ -34,7 +34,7 @@ namespace MytraApp.Controllers
         {
             return Ok(await _mediator.Send(getAllUserQuery));
         }
-        [HttpPost("LoginUser")]
+        [HttpGet("LoginUser")]
         public async Task<ActionResult<bool>> UserLogin([FromBody] UserLoginQuery userLoginQuery)
         {
             try

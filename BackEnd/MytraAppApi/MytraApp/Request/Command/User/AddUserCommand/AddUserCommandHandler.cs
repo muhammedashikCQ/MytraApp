@@ -23,7 +23,7 @@ namespace MytraApp.Request.Command.User.AddUserCommand
             {
                 user.UserName = command.UserName;
             }
-            else throw new Exception("Username Cannot be empty");
+            else throw new Exception("Username cannot be empty");
             
 
             var pattern = @"^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
