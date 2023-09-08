@@ -1,0 +1,17 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/BackEnd/MytraAppApi/MytraApp/.vs/MytraApp/DesignTimeBuild/.dtbcache.v2
+.vs
+/.vs/
+.vs/
+*.dll
+*.exe
+*.pdb
+/build/
+*.suo
+*.user
+obj/
+.vscode/
+bin/

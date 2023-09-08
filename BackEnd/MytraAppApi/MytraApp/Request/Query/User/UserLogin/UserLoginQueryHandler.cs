@@ -7,10 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using MytraModel.Models;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Threading;
+using MytraApp.DTOs;
 
 namespace MytraApp.Request.Query.User.UserLogin
 {
-    public class UserLoginQueryHandler : IRequestHandler<UserLoginQuery, bool>
+    public class UserLoginQueryHandler : IRequestHandler<UserLoginQuery, UserDto>
     {
         private readonly MytraContext _context;
 
@@ -18,14 +19,19 @@ namespace MytraApp.Request.Query.User.UserLogin
         {
             _context = context;
         }
-        public async Task<bool> Handle(UserLoginQuery query, CancellationToken cancellationToken)
+        public async Task<UserDto> Handle(UserLoginQuery query, CancellationToken cancellationToken)
         {
 
-            Models.User user = new Models.User();
-            bool isEmailAndPasswordExist = await _context.User.AnyAsync(x => x.MailId == query.MailId && x.Password == query.Password);
-            if (isEmailAndPasswordExist)
+
+            var user =  await _context.User.FirstOrDefaultAsync(x => x.MailId == query.MailId && x.Password == query.Password);
+            if (user is not null)
             {
-                return true;
+
+                UserDto userDto = new UserDto();
+                userDto.UserName= user.UserName;
+                userDto.UserId= user.UserId;
+                userDto.MailId= user.MailId;
+                return userDto;
             }
             else
             {
