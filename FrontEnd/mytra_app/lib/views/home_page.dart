@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:mytra_app/views/bottom_demo_container.dart';
 import 'package:mytra_app/views/floating_demo_conatiner.dart';
 
@@ -8,10 +9,8 @@ import '../widgets/bottom_container.dart';
 import '../widgets/icon_container.dart';
 
 class HomePage extends StatefulWidget {
-  final int id;
   const HomePage({
     super.key,
-    required this.id,
   });
 
   @override
@@ -19,6 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  static Box<String> idBox = Hive.box<String>("idBox");
   List<String> headerList = [
     "Cleaning",
     "Plumbing",
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Devon Lane",
+                Text(idBox.get('userName').toString(),
                     style: GoogleFonts.heebo(
                         textStyle: const TextStyle(
                       color: Color(0xff464646),

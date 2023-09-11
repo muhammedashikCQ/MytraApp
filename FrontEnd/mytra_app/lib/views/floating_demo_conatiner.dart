@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mytra_app/views/request_page.dart';
 
 class FloatingDemoContainer extends StatelessWidget {
   const FloatingDemoContainer({super.key});
@@ -9,7 +11,10 @@ class FloatingDemoContainer extends StatelessWidget {
       width: 66,
       height: 66,
       child: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(const RequestPage());
+          Get.back();
+        },
         foregroundColor: Colors.white,
         shape: const CircleBorder(),
         backgroundColor: const Color(0xff545454),
