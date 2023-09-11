@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MytraApp.DTOs;
+using MytraApp.Request.Command.Order.AddOrderCommand;
 using MytraApp.Request.Command.User.AddUserCommand;
 using MytraApp.Request.Query.Services.GetServices;
 using MytraApp.Request.Query.User.GetUserQuery;
@@ -56,6 +57,20 @@ namespace MytraApp.Controllers
         public async Task<ActionResult<Service>> GetServices([FromQuery] GetServicesQuery getServicesQuery)
         {
             return Ok(await _mediator.Send(getServicesQuery));
+        }
+
+        [HttpPost("Order")]
+        public async Task<ActionResult<bool>> Order([FromBody] AddOrderCommand addOrderCommand)
+        {
+            try
+            {
+                return Ok(await _mediator.Send(addOrderCommand));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
     }
 }

@@ -11,7 +11,7 @@ namespace MytraModel.Models
     {
         public int ServiceId { get; set; }
         public string ServiceName { get; }
-        private Service() { 
+        public Service() { 
             ServiceName=string.Empty;
         }
         public Service(ServiceEnum serviceEnum)

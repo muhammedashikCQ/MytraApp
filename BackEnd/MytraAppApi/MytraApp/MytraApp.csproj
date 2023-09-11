@@ -37,4 +37,8 @@
     <ProjectReference Include="..\MytraRepository\MytraRepository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Request\Query\Location\" />
+  </ItemGroup>
+
 </Project>

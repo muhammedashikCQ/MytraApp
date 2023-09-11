@@ -221,7 +221,7 @@ class _SignUpInPageState extends State<SignUpInPage> {
                                     );
                                     if (userSignUpController
                                         .isLoadingL.isFalse) {
-                                      // print(idBox.get('userId'));
+                                      print(idBox.get('userId'));
                                       Get.to(HomePage(
                                         id: idBox.get('userId')!,
                                       ));
