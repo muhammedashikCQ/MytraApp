@@ -81,6 +81,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.6"
+  dropdown_button2:
+    dependency: "direct main"
+    description:
+      name: dropdown_button2
+      sha256: b0fe8d49a030315e9eef6c7ac84ca964250155a6224d491c1365061bc974a9e1
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.9"
   fake_async:
     dependency: transitive
     description:
@@ -118,6 +126,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  flutter_localizations:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_phone_direct_caller:
     dependency: "direct main"
     description:
@@ -200,6 +213,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.2"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      sha256: a3715e3bc90294e971cb7dc063fbf3cd9ee0ebf8604ffeafabd9e6f16abbdbe6
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.0"
   js:
     dependency: transitive
     description:
@@ -240,6 +261,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  multiselect:
+    dependency: "direct main"
+    description:
+      name: multiselect
+      sha256: "8d0c4a7b89bee6c5e5e4a25ecba68c796dafc1917492d5606f0caa3947d5905a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
+  navigation_builder:
+    dependency: transitive
+    description:
+      name: navigation_builder
+      sha256: "95e25150191d9cd4e4b86504f33cd9e786d1e6732edb2e3e635bbedc5ef0dea7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   page_transition:
     dependency: transitive
     description:
@@ -365,6 +402,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  states_rebuilder:
+    dependency: transitive
+    description:
+      name: states_rebuilder
+      sha256: bf1a5ab5c543acdefce35e60f482eb7ab592339484fe3266d147ee597f18dc92
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.0"
   stream_channel:
     dependency: transitive
     description:

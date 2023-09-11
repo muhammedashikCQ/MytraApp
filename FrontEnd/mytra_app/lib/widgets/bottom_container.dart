@@ -104,9 +104,31 @@ class BottomContainer extends StatelessWidget {
                   ))),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
-            child: SvgPicture.asset("assets/images/eclipsebehindgirl.svg"),
+          const Spacer(),
+          SizedBox(
+            height: 120,
+            width: 120,
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 0, 12),
+                  child: SvgPicture.asset(
+                    "assets/images/eclipsebehindgirl.svg",
+                    width: 82,
+                    height: 82,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
+                  child: Image.asset(
+                    "assets/images/girlicon1.png",
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),
