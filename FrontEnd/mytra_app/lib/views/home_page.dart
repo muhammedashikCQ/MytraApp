@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mytra_app/views/bottom_demo_container.dart';
+import 'package:mytra_app/views/floating_demo_conatiner.dart';
 
 import '../widgets/bottom_container.dart';
 import '../widgets/icon_container.dart';
@@ -91,7 +93,9 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: [
           Container(
-            margin: const EdgeInsets.fromLTRB(210, 35, 0, 0),
+            width: 400,
+            height: 500,
+            margin: const EdgeInsets.fromLTRB(180, 40, 0, 0),
             child: SvgPicture.asset("assets/images/eclipserings.svg"),
           ),
           Container(
@@ -112,152 +116,161 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
               ),
               margin: const EdgeInsets.fromLTRB(5, 110, 0, 0),
+
               padding: const EdgeInsets.fromLTRB(15, 25, 0, 0),
 
               //height: 1000,
               // width: 500,
 
               ///Container for lowest part----------------------------------------------------------------------
-              child: ListView(
-                padding: EdgeInsets.zero,
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ///Searchbar(Textfield)
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(15, 0, 20, 0),
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ///Searchbar(Textfield)
 
-                  Container(
-                    decoration: BoxDecoration(
-                      boxShadow: const [
-                        BoxShadow(
-                            color: Color.fromARGB(255, 235, 235, 235),
-                            blurRadius: 10,
-                            spreadRadius: 1,
-                            offset: Offset(0, 0))
-                      ],
-                      borderRadius: BorderRadius.circular(5),
-                      color: const Color(0xffFFFFFF),
-                    ),
-                    width: 370,
-                    height: 50,
-                    child: TextField(
-                      cursorColor: const Color.fromARGB(255, 20, 20, 20),
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        icon: Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
-                          child:
-                              SvgPicture.asset("assets/images/searchicon.svg"),
+                    Container(
+                      width: 350,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Color.fromARGB(255, 235, 235, 235),
+                              blurRadius: 10,
+                              spreadRadius: 1,
+                              offset: Offset(0, 0))
+                        ],
+                        borderRadius: BorderRadius.circular(5),
+                        color: const Color(0xffFFFFFF),
+                      ),
+                      child: TextField(
+                        autocorrect: true,
+                        cursorColor: const Color.fromARGB(255, 20, 20, 20),
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          icon: Padding(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 0, 15),
+                            child: SvgPicture.asset(
+                                "assets/images/searchicon.svg"),
+                          ),
+                          hintText: "Search",
+                          hintStyle: GoogleFonts.heebo(
+                              textStyle: const TextStyle(
+                            color: Color(0xffD3D3D3),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w300,
+                            fontStyle: FontStyle.normal,
+                          )),
+                          enabledBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xffFFFFFF),
+                            ),
+                          ),
+                          focusedBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xffFFFFFF),
+                            ),
+                          ),
                         ),
-                        hintText: "Search",
-                        hintStyle: GoogleFonts.heebo(
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SvgPicture.asset(
+                      "assets/images/bookingicon.svg",
+                      width: 370,
+                      height: 129,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text("Select Service For Repair",
+                        style: GoogleFonts.heebo(
                             textStyle: const TextStyle(
-                          color: Color(0xffD3D3D3),
-                          fontSize: 15,
-                          fontWeight: FontWeight.w300,
+                          color: Color(0xff464646),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
                           fontStyle: FontStyle.normal,
-                        )),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xffFFFFFF),
-                          ),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xffFFFFFF),
-                          ),
-                        ),
-                      ),
+                        ))),
+                    const SizedBox(
+                      height: 10,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SvgPicture.asset(
-                    "assets/images/bookingicon.svg",
-                    width: 370,
-                    height: 129,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text("Select Service For Repair",
-                      style: GoogleFonts.heebo(
-                          textStyle: const TextStyle(
-                        color: Color(0xff464646),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        fontStyle: FontStyle.normal,
-                      ))),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  //select service part//
-                  GridView.builder(
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        mainAxisSpacing: 8.0,
-                        crossAxisSpacing: 8.0,
-                      ),
-                      padding: const EdgeInsets.fromLTRB(0, 0, 25, 0),
-                      itemCount: headerList.length,
-                      itemBuilder: (BuildContext ctx, index) {
-                        return InkWell(
-                          onTap: () {
-                            switch (index) {
-                              case 0:
-                                return print(0);
-                              case 1:
-                                return print(1);
-                              case 2:
-                                return print(2);
-                              case 3:
-                                return print(3);
-                              case 4:
-                                return print(4);
-                              case 5:
-                                return print(5);
-                            }
-                          },
-                          child: DemoContainer(
-                            header: headerList[index],
-                            imagePath: imagePathList[index],
-                          ),
-                        );
-                      }),
-
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text("Service Request",
-                      style: GoogleFonts.heebo(
-                          textStyle: const TextStyle(
-                        color: Color(0xff464646),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        fontStyle: FontStyle.normal,
-                      ))),
-                  const SizedBox(height: 10),
-                  SizedBox(
-                    height: 120,
-                    child: ListView.builder(
-                        itemCount: headerList1.length,
-                        padding: EdgeInsets.zero,
+                    //select service part//
+                    GridView.builder(
                         shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          mainAxisSpacing: 8.0,
+                          crossAxisSpacing: 8.0,
+                        ),
+                        padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                        itemCount: headerList.length,
                         itemBuilder: (BuildContext ctx, index) {
-                          return BottomContainer(
-                            header: headerList1[index],
-                            indexes: bottomindex[index],
+                          return InkWell(
+                            onTap: () {
+                              switch (index) {
+                                case 0:
+                                  return print(0);
+                                case 1:
+                                  return print(1);
+                                case 2:
+                                  return print(2);
+                                case 3:
+                                  return print(3);
+                                case 4:
+                                  return print(4);
+                                case 5:
+                                  return print(5);
+                              }
+                            },
+                            child: DemoContainer(
+                              header: headerList[index],
+                              imagePath: imagePathList[index],
+                            ),
                           );
                         }),
-                  )
-                ],
+
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Text("Service Request",
+                        style: GoogleFonts.heebo(
+                            textStyle: const TextStyle(
+                          color: Color(0xff464646),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.normal,
+                        ))),
+                    const SizedBox(height: 5),
+                    SizedBox(
+                      height: 120,
+                      child: ListView.builder(
+                          clipBehavior: Clip.none,
+                          itemCount: headerList1.length,
+                          padding: EdgeInsetsDirectional.zero,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (BuildContext ctx, index) {
+                            return BottomContainer(
+                              header: headerList1[index],
+                              indexes: bottomindex[index],
+                            );
+                          }),
+                    )
+                  ],
+                ),
               ),
             ),
           )
         ],
       ),
+      bottomNavigationBar: const BottomDemoContainer(),
+      floatingActionButton: const FloatingDemoContainer(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
