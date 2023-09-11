@@ -9,21 +9,25 @@ UserLogin userLoginFromJson(String str) => UserLogin.fromJson(json.decode(str));
 String userLoginToJson(UserLogin data) => json.encode(data.toJson());
 
 class UserLogin {
-    String? mailId;
-    String? password;
+  int? userId;
+  String? userName;
+  String? mailId;
 
-    UserLogin({
-        this.mailId,
-        this.password,
-    });
+  UserLogin({
+    this.userId,
+    this.userName,
+    this.mailId,
+  });
 
-    factory UserLogin.fromJson(Map<String, dynamic> json) => UserLogin(
+  factory UserLogin.fromJson(Map<String, dynamic> json) => UserLogin(
+        userId: json["userId"],
+        userName: json["userName"],
         mailId: json["mailId"],
-        password: json["password"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
+        "userId": userId,
+        "userName": userName,
         "mailId": mailId,
-        "password": password,
-    };
+      };
 }

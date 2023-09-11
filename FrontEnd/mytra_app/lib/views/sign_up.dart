@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 
 import '../controllers/user_signup_controller.dart';
 import '../widgets/login_widget.dart';
 import '../widgets/signup_widget.dart';
+import 'home_page.dart';
 
 class SignUpInPage extends StatefulWidget {
   const SignUpInPage({super.key});
@@ -14,6 +16,8 @@ class SignUpInPage extends StatefulWidget {
 }
 
 class _SignUpInPageState extends State<SignUpInPage> {
+  static Box<int> idBox = Hive.box<int>("idBox");
+
   final UserSignUpController userSignUpController =
       Get.put(UserSignUpController());
   int contentClick = 0;
@@ -215,6 +219,13 @@ class _SignUpInPageState extends State<SignUpInPage> {
                                       loginEmailController.text,
                                       loginPasswordController.text,
                                     );
+                                    if (userSignUpController
+                                        .isLoadingL.isFalse) {
+                                      // print(idBox.get('userId'));
+                                      Get.to(HomePage(
+                                        id: idBox.get('userId')!,
+                                      ));
+                                    }
                                   },
                                   icon: SvgPicture.asset(
                                       'assets/images/arrowL.svg')),

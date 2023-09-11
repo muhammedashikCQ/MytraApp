@@ -6,7 +6,11 @@ import '../widgets/bottom_container.dart';
 import '../widgets/icon_container.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final int id;
+  const HomePage({
+    super.key,
+    required this.id,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();

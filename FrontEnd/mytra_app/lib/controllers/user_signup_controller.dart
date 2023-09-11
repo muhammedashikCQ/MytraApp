@@ -13,17 +13,12 @@ class UserSignUpController extends GetxController {
     var x = await ApiCall().apiUserSignUp(userName, mailId, password);
     userSignUp(x);
     isLoadingS(false);
-
-    // if (x == false) {
-    //   isLoadingS(false);
-    // }
   }
 
   Rx userLogin = UserLogin().obs;
   RxBool isLoadingL = true.obs;
 
   Future<void> controllerUserLogin(String mailId, String password) async {
-    isLoadingL(true);
     var x = await ApiCall().apiUserLogin(mailId, password);
     userLogin(x);
     isLoadingL(false);

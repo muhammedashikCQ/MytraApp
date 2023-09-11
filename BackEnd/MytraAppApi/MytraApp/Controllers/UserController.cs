@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using MytraApp.DTOs;
 using MytraApp.Request.Command.User.AddUserCommand;
 using MytraApp.Request.Query.User.GetUserQuery;
 using MytraApp.Request.Query.User.UserLogin;
@@ -34,8 +35,8 @@ namespace MytraApp.Controllers
         {
             return Ok(await _mediator.Send(getAllUserQuery));
         }
-        [HttpGet("UserLogin")]
-        public async Task<ActionResult<bool>> UserLogin([FromBody] UserLoginQuery userLoginQuery)
+        [HttpPost("UserLogin")]
+        public async Task<ActionResult<UserDto>> UserLogin([FromQuery] UserLoginQuery userLoginQuery)
         {
             try
             {
