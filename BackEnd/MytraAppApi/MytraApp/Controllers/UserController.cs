@@ -1,9 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MytraApp.DTOs;
 using MytraApp.Request.Command.User.AddUserCommand;
+using MytraApp.Request.Query.Services.GetServices;
 using MytraApp.Request.Query.User.GetUserQuery;
 using MytraApp.Request.Query.User.UserLogin;
+using MytraModel.Models;
 
 namespace MytraApp.Controllers
 {
@@ -47,6 +50,12 @@ namespace MytraApp.Controllers
                 return BadRequest(ex.Message);
             }
             
+        }
+
+        [HttpGet("GetServices")]
+        public async Task<ActionResult<Service>> GetServices([FromQuery] GetServicesQuery getServicesQuery)
+        {
+            return Ok(await _mediator.Send(getServicesQuery));
         }
     }
 }
