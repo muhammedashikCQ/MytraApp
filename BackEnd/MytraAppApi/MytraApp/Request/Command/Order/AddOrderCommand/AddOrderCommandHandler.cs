@@ -1,52 +1,69 @@
-﻿//using MediatR;
-//using MytraModel.Models;
-//using MytraRepository.Context;
-//using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-//using Models = MytraModel.Models;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using MytraModel.Models;
+using MytraRepository.Context;
+using System.Reflection.Metadata.Ecma335;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using Models = MytraModel.Models;
 
 
-//namespace MytraApp.Request.Command.Order.AddOrderCommand
-//{
-//    public class AddOrderCommandHandler : IRequestHandler<AddOrderCommand, string>
-//    {
-//        private readonly MytraContext context;
+namespace MytraApp.Request.Command.Order.AddOrderCommand
+{
+    public class AddOrderCommandHandler : IRequestHandler<AddOrderCommand,string>
+    {
+        private readonly MytraContext context;
 
-//        public AddOrderCommandHandler(MytraContext context)
-//        {
-//            this.context = context;
-//        }
+        public AddOrderCommandHandler(MytraContext context)
+        {
+            this.context = context;
+        }
 
-//        public Task<string> Handle(AddOrderCommand command, CancellationToken cancellationToken)
-//        {
-//            Models.Order order = new Models.Order();
-//            Models.OrderDetail orderDetail = new Models.OrderDetail();
-//            if (command.Description != "")
-//            {
-//                order.Description = command.Description;
-//            }
-//            else throw new Exception("Description cannot be empty");
+        public async Task<string> Handle(AddOrderCommand command, CancellationToken cancellationToken)
+        {
+            Models.Order order = new Models.Order();
+            
+            Models.OrderDetail orderDetail = new Models.OrderDetail();
+            if (command.Description != "")
+            {
+                order.Description = command.Description;
 
-//            if (command.BuildingName != "")
-//            {
-//                order.BuildingName = command.BuildingName;
-//            }
-//            else throw new Exception("Description cannot be empty");
+            }
+            else throw new Exception("Description cannot be empty");
 
-//            if (command.ServiceId is not null)
-//            {
-//                orderDetail.ServiceId = (int)command.ServiceId;
-//            }
-//            else throw new Exception("Please select a service");
+            if (command.BuildingName != "")
+            {
+                order.BuildingName = command.BuildingName;
+            }
+            else throw new Exception("BuildingName cannot be empty");
 
-//            if (command.LocationId is not null)
-//            {
-//                order.LocationId = (int)command.LocationId;
-//            }
-//            else throw new Exception("Please select a location");
+            if (command.UserId >0)
+            {
+                order.UserId = (int)command.UserId;
+            }
+            else throw new Exception("Please select a location");
 
 
-//            return "success";
+            if (command.LocationId is not null)
+            {
+                order.LocationId = (int)command.LocationId;
+            }
+            else throw new Exception("Please select a location");
+            await context.Order.AddAsync(order);
+            var orderdetails =  command.ServiceId.Select(x =>
+            {
+                return new Models.OrderDetail
+                {
+                    Order = order,
+                    ServiceId = x
+                };
+            }
+            );
+            await context.OrderDetail.AddRangeAsync(orderdetails);
+            await context.SaveChangesAsync(cancellationToken);
 
-//        }
-//    }
-//}
+            return "success";
+
+        }
+    }
+}

@@ -9,7 +9,7 @@ namespace MytraRepository.Context
     public class MytraContext : DbContext
     {
         public MytraContext(DbContextOptions option) : base(option)
-        {
+        { 
 
         }
         public DbSet<User> User { get; set; }
