@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:mytra_app/views/request_page.dart';
+import 'package:mytra_app/views/splash_screen.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<void> main() async {
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const RequestPage(),
+      home: const SplashPage(),
     );
   }
 }
