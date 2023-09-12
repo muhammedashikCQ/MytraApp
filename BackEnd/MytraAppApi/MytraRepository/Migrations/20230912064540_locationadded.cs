@@ -7,7 +7,7 @@
 namespace MytraRepository.Migrations
 {
     /// <inheritdoc />
-    public partial class createDatabase : Migration
+    public partial class locationadded : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

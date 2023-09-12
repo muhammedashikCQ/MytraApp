@@ -12,8 +12,10 @@ class FloatingDemoContainer extends StatelessWidget {
       height: 66,
       child: FloatingActionButton(
         onPressed: () {
-          Get.to(const RequestPage());
-          Get.back();
+          Get.to(const RequestPage(
+            serviceId: 0,
+            //serviceId: [0],
+          ));
         },
         foregroundColor: Colors.white,
         shape: const CircleBorder(),

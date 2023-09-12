@@ -7,6 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/location_model.dart';
+import '../models/request_model.dart';
 import '../models/services_model.dart';
 import '../models/user_login_model.dart';
 
@@ -59,7 +60,7 @@ class ApiCall {
       } else {
         String message = response.body;
         Get.snackbar("ERROR", message, backgroundColor: Colors.redAccent);
-        // print(message);
+
         return false;
       }
     } catch (e) {
@@ -73,11 +74,8 @@ class ApiCall {
       http.Response response = await http.get(
         Uri.parse("http://10.0.2.2:5039/api/User/GetServices"),
       );
-      print(response.body);
       if (response.statusCode == 200) {
         return servicesDataFromJson(response.body);
-
-        //return response.statusCode;
       } else {}
     } catch (e) {
       log(e.toString());
@@ -89,11 +87,31 @@ class ApiCall {
       http.Response response = await http.get(
         Uri.parse("http://10.0.2.2:5039/api/User/GetLocations"),
       );
-      print(response.body);
       if (response.statusCode == 200) {
         return locationDataFromJson(response.body);
+      } else {}
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 
-        //return response.statusCode;
+  Future apiPostRequest(List<int> serviceId, int userId, int locationId,
+      String buildingName, String description) async {
+    try {
+      http.Response response = await http.post(
+        Uri.parse("http://10.0.2.2:5039/api/User/Order"),
+        headers: {"Content-Type": "application/json"},
+        body: json.encode({
+          "serviceId": serviceId,
+          "userId": userId,
+          "locationId": locationId,
+          "buildingName": buildingName,
+          "description": description
+        }),
+      );
+      print(response.body);
+      if (response.statusCode == 200) {
+        return requestDataFromJson(response.body);
       } else {}
     } catch (e) {
       log(e.toString());

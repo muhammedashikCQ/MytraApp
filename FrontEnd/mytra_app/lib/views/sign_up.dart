@@ -162,20 +162,15 @@ class _SignUpInPageState extends State<SignUpInPage> {
                               height: 70,
                               width: 150,
                               child: IconButton(
-                                  //signup submit button
-                                  onPressed: () {
-                                    // print(passwordController.text);
-                                    // userSignUpController.isLoadingS=false as RxBool;
-                                    // print(userSignUpController.isLoadingS);
+                                  onPressed: () async {
                                     if ((passwordController.text ==
                                         confirmPasswordController.text)) {
-                                      userSignUpController.controllerUserSignUp(
-                                          userNameController.text,
-                                          emailController.text,
-                                          passwordController.text);
-                                      // print(userSignUpController.isLoadingS);
-                                      if (userSignUpController
-                                          .isLoadingS.isFalse) {
+                                      bool y = await userSignUpController
+                                          .controllerUserSignUp(
+                                              userNameController.text,
+                                              emailController.text,
+                                              passwordController.text);
+                                      if (y) {
                                         setState(() {
                                           contentClick = 1;
                                         });
@@ -213,6 +208,7 @@ class _SignUpInPageState extends State<SignUpInPage> {
                               width: 150,
                               child: IconButton(
                                   //login submit button
+
                                   onPressed: () async {
                                     bool x = await userSignUpController
                                         .controllerUserLogin(

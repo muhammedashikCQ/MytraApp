@@ -2,39 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:multiselect_dropdown_flutter/multiselect_dropdown_flutter.dart';
-import 'package:mytra_app/views/previous_orders_page.dart';
+import 'package:mytra_app/models/services_model.dart';
+import 'package:mytra_app/views/success_page.dart';
 
 import '../controllers/service_request_controller.dart';
-import 'bottom_demo_container.dart';
-import 'floating_demo_conatiner.dart';
 
 class RequestPage extends StatefulWidget {
-  const RequestPage({super.key});
+  final int serviceId;
+  const RequestPage({super.key, required this.serviceId});
 
   @override
   State<RequestPage> createState() => _RequestPageState();
 }
 
 String? selectedValue;
-List<DropdownMenuItem<String>> location = [
-  // const DropdownMenuItem(value: "1", child: Text("Trivandrum")),
-  // const DropdownMenuItem(value: "2", child: Text("Kollam")),
-  // const DropdownMenuItem(value: "3", child: Text("Kottayam")),
-  // const DropdownMenuItem(value: "4", child: Text("Kochi")),
-];
-List<DropdownMenuItem<String>> selectedservices = [];
-
+List<DropdownMenuItem<String>> locations = [];
+List selectedservices = [];
 List services = [];
 
 class _RequestPageState extends State<RequestPage> {
+  static Box<String> idBox = Hive.box<String>("idBox");
   final ServiceRequestController serviceRequestController =
       Get.put(ServiceRequestController());
+  final TextEditingController descriptioncontroller = TextEditingController();
+  final TextEditingController buildingnamecontroller = TextEditingController();
   @override
   void initState() {
     super.initState();
-    serviceRequestController.getservices();
-    serviceRequestController.getlocation();
+    serviceRequestController.loadData();
   }
 
   @override
@@ -43,22 +40,55 @@ class _RequestPageState extends State<RequestPage> {
       if (serviceRequestController.isLoading.value) {
         return const Center(child: CircularProgressIndicator());
       }
-      // services = serviceRequestController.data
-      //     .map((e) => {
-      //           "id": e.serviceId,
-      //           "label": e.serviceName,
-      //         })
-      //     .toList();
-      location = serviceRequestController.locationdata
+
+      // for (var element in serviceRequestController.data) {
+      //   if (element.serviceId == widget.serviceId) {
+      //     selectedservices = [
+      //       {
+      //         "id": serviceRequestController.data
+      //             .firstWhere((e) => e.serviceId == widget.serviceId)
+      //             .serviceId,
+      //         "label": serviceRequestController.data
+      //             .firstWhere((e) => e.serviceId == widget.serviceId)
+      //             .serviceName
+      //       }
+      //     ];
+      //   }
+      // }
+      var selectedService = serviceRequestController.data.firstWhere(
+        (element) => element.serviceId == widget.serviceId,
+        orElse: () => ServicesData(),
+      );
+      if (selectedService.serviceId != null) {
+        selectedservices = [
+          {
+            "id": selectedService.serviceId,
+            "label": selectedService.serviceName,
+          }
+        ];
+      }
+
+      print(selectedservices);
+
+      services = serviceRequestController.data
+          .map((e) => {
+                "id": e.serviceId,
+                "label": e.serviceName,
+              })
+          .toList();
+      locations = serviceRequestController.locationdata
           .map<DropdownMenuItem<String>>((element) => DropdownMenuItem(
               value: element.locationId.toString(),
               child: Text(element.locationName.toString())))
           .toList();
-      print(services);
+
+      // print(locations);
+      //  print(services);
       return Scaffold(
         extendBodyBehindAppBar: true,
         backgroundColor: const Color.fromARGB(255, 240, 240, 240),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
           title: Row(
             children: [
@@ -157,8 +187,14 @@ class _RequestPageState extends State<RequestPage> {
                         fontStyle: FontStyle.normal,
                       )),
                       list: services,
-                      initiallySelected: const [],
-                      onChange: (newList) {},
+                      initiallySelected: selectedservices,
+                      onChange: (List newList) {
+                        setState(() {
+                          // selectedservices =
+                          //     newList.map((e) => e['id']).toList();
+                        });
+                        print(selectedservices);
+                      },
                     ),
                   ),
                   const SizedBox(
@@ -182,6 +218,7 @@ class _RequestPageState extends State<RequestPage> {
                   SizedBox(
                     height: 55,
                     child: TextField(
+                      controller: buildingnamecontroller,
                       decoration: InputDecoration(
                         enabledBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
@@ -222,36 +259,38 @@ class _RequestPageState extends State<RequestPage> {
                     height: 10,
                   ),
                   SizedBox(
-                      height: 55,
+                      height: 60,
                       child: DropdownButtonFormField(
-                          decoration: InputDecoration(
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0xffD7D7D7),
-                              ),
-                            ),
-                            hintText: 'location',
-                            hintStyle: GoogleFonts.heebo(
-                                textStyle: const TextStyle(
-                              color: Color(0xffB7B7B7),
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                            )),
-                            focusedBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0xffD7D7D7),
-                              ),
+                        decoration: InputDecoration(
+                          enabledBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xffD7D7D7),
                             ),
                           ),
-                          dropdownColor: Colors.white,
-                          value: selectedValue,
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              selectedValue = newValue!;
-                            });
-                          },
-                          items: location)),
+                          hintText: 'location',
+                          hintStyle: GoogleFonts.heebo(
+                              textStyle: const TextStyle(
+                            color: Color(0xffB7B7B7),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                          )),
+                          focusedBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xffD7D7D7),
+                            ),
+                          ),
+                        ),
+                        dropdownColor: Colors.white,
+                        value: selectedValue,
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedValue = newValue!;
+                          });
+                          print(selectedValue);
+                        },
+                        items: locations,
+                      )),
                   const SizedBox(
                     height: 15,
                   ),
@@ -272,6 +311,7 @@ class _RequestPageState extends State<RequestPage> {
                   SizedBox(
                     height: 100,
                     child: TextField(
+                      controller: descriptioncontroller,
                       decoration: InputDecoration(
                         enabledBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
@@ -305,7 +345,27 @@ class _RequestPageState extends State<RequestPage> {
                     height: 60,
                     child: TextButton(
                         onPressed: () {
-                          Get.to(const PreviousOrdersPage());
+                          if (selectedservices.isEmpty ||
+                              buildingnamecontroller.text.isEmpty ||
+                              descriptioncontroller.text.isEmpty ||
+                              selectedValue == null) {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return const AlertDialog(
+                                    title: Text("Warning"),
+                                    content: Text("All fields are mandatory"),
+                                  );
+                                });
+                          } else {
+                            serviceRequestController.postRequest(
+                                List<int>.from(selectedservices),
+                                int.parse(idBox.get("userId").toString()),
+                                int.parse(selectedValue!),
+                                buildingnamecontroller.text,
+                                descriptioncontroller.text);
+                            Get.to(const SuccessPage());
+                          }
                         },
                         child: Text('Submit',
                             style: GoogleFonts.heebo(
@@ -320,10 +380,10 @@ class _RequestPageState extends State<RequestPage> {
               ),
             ),
           ),
+          Container(
+              margin: const EdgeInsets.fromLTRB(10, 700, 0, 0),
+              child: const BackButton())
         ]),
-        bottomNavigationBar: const BottomDemoContainer(),
-        floatingActionButton: const FloatingDemoContainer(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       );
     });
   }

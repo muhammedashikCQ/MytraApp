@@ -11,8 +11,8 @@ using MytraRepository.Context;
 namespace MytraRepository.Migrations
 {
     [DbContext(typeof(MytraContext))]
-    [Migration("20230912051622_createDatabase")]
-    partial class createDatabase
+    [Migration("20230912064540_locationadded")]
+    partial class locationadded
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
