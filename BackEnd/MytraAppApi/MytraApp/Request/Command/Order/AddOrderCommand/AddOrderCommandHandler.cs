@@ -1,13 +1,16 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using MytraModel.Models;
 using MytraRepository.Context;
+using System.Reflection.Metadata.Ecma335;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using Models = MytraModel.Models;
 
 
 namespace MytraApp.Request.Command.Order.AddOrderCommand
 {
-    public class AddOrderCommandHandler : IRequestHandler<AddOrderCommand, string>
+    public class AddOrderCommandHandler : IRequestHandler<AddOrderCommand,string>
     {
         private readonly MytraContext context;
 
@@ -19,7 +22,7 @@ namespace MytraApp.Request.Command.Order.AddOrderCommand
         public async Task<string> Handle(AddOrderCommand command, CancellationToken cancellationToken)
         {
             Models.Order order = new Models.Order();
-            Models.Service service = new Models.Service();
+            
             Models.OrderDetail orderDetail = new Models.OrderDetail();
             if (command.Description != "")
             {
@@ -34,22 +37,29 @@ namespace MytraApp.Request.Command.Order.AddOrderCommand
             }
             else throw new Exception("BuildingName cannot be empty");
 
-            if (command.ServiceId is not null)
+            if (command.UserId >0)
             {
-                orderDetail.ServiceId = (int)command.ServiceId;
+                order.UserId = (int)command.UserId;
             }
-            else throw new Exception("Please select a service");
+            else throw new Exception("Please select a location");
+
 
             if (command.LocationId is not null)
             {
                 order.LocationId = (int)command.LocationId;
             }
             else throw new Exception("Please select a location");
-            orderDetail.Order = order;
-            orderDetail.Service = service;
-
-            context.Order.Add(order);
-            context.OrderDetail.Add(orderDetail);
+            await context.Order.AddAsync(order);
+            var orderdetails =  command.ServiceId.Select(x =>
+            {
+                return new Models.OrderDetail
+                {
+                    Order = order,
+                    ServiceId = x
+                };
+            }
+            );
+            await context.OrderDetail.AddRangeAsync(orderdetails);
             await context.SaveChangesAsync(cancellationToken);
 
             return "success";

@@ -11,8 +11,8 @@ using MytraRepository.Context;
 namespace MytraRepository.Migrations
 {
     [DbContext(typeof(MytraContext))]
-    [Migration("20230906043202_dbupdated")]
-    partial class dbupdated
+    [Migration("20230912051622_createDatabase")]
+    partial class createDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,10 +27,7 @@ namespace MytraRepository.Migrations
             modelBuilder.Entity("MytraModel.Models.Location", b =>
                 {
                     b.Property<int>("LocationId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocationId"));
 
                     b.Property<string>("LocationName")
                         .IsRequired()
@@ -40,6 +37,33 @@ namespace MytraRepository.Migrations
                     b.HasKey("LocationId");
 
                     b.ToTable("Location");
+
+                    b.HasData(
+                        new
+                        {
+                            LocationId = 1,
+                            LocationName = "Trivandrum"
+                        },
+                        new
+                        {
+                            LocationId = 2,
+                            LocationName = "Kollam"
+                        },
+                        new
+                        {
+                            LocationId = 3,
+                            LocationName = "Kochi"
+                        },
+                        new
+                        {
+                            LocationId = 4,
+                            LocationName = "Kottayam"
+                        },
+                        new
+                        {
+                            LocationId = 5,
+                            LocationName = "Idukki"
+                        });
                 });
 
             modelBuilder.Entity("MytraModel.Models.Order", b =>

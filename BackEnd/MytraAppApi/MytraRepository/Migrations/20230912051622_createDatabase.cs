@@ -6,18 +6,17 @@
 
 namespace MytraRepository.Migrations
 {
-
-    public partial class dbupdated : Migration
+    /// <inheritdoc />
+    public partial class createDatabase : Migration
     {
-     
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "Location",
                 columns: table => new
                 {
-                    LocationId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LocationId = table.Column<int>(type: "int", nullable: false),
                     LocationName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -104,6 +103,18 @@ namespace MytraRepository.Migrations
                         principalTable: "Service",
                         principalColumn: "ServiceId",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Location",
+                columns: new[] { "LocationId", "LocationName" },
+                values: new object[,]
+                {
+                    { 1, "Trivandrum" },
+                    { 2, "Kollam" },
+                    { 3, "Kochi" },
+                    { 4, "Kottayam" },
+                    { 5, "Idukki" }
                 });
 
             migrationBuilder.InsertData(
