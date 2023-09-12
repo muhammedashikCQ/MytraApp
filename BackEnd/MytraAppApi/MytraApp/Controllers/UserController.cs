@@ -5,6 +5,7 @@ using MytraApp.DTOs;
 using MytraApp.Request.Command.Order.AddOrderCommand;
 using MytraApp.Request.Command.User.AddUserCommand;
 using MytraApp.Request.Query.Location.GetLocation;
+using MytraApp.Request.Query.Order;
 using MytraApp.Request.Query.Services.GetServices;
 using MytraApp.Request.Query.User.GetUserQuery;
 using MytraApp.Request.Query.User.UserLogin;
@@ -79,19 +80,17 @@ namespace MytraApp.Controllers
 
         }
 
-        //[HttpGet("combined")]
-        //public IActionResult GetCombinedData()
-        //{
-        //    var services = getServicesHandler.Handle(new GetServicesQuery());
-        //    var locations = getLocationsHandler.Handle(new GetLocationQuery());
-
-        //    var combinedData = new
-        //    {
-        //        Services = services,
-        //        Locations = locations
-        //    };
-
-        //    return Ok(combinedData);
-        //}
+        [HttpGet("GetUserOrders")]
+        public async Task<IActionResult> GetUserOrders([FromQuery] GetUserOrdersQuery getUserOrdersQuery)
+        {
+            try 
+            {
+                return Ok(await _mediator.Send(getUserOrdersQuery));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

@@ -23,9 +23,9 @@ namespace MytraRepository.Configurations
                 .OnDelete(DeleteBehavior.Restrict);
             builder.Property(x => x.OrderId)
                 .IsRequired();
-            builder.HasOne(x => x.Order).WithMany()
-                .HasForeignKey(x => x.OrderId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder.HasOne(x => x.Order).WithMany()
+            //    .HasForeignKey(x => x.OrderId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

@@ -7,7 +7,7 @@
 namespace MytraRepository.Migrations
 {
     /// <inheritdoc />
-    public partial class createDatabase : Migration
+    public partial class createdDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -96,7 +96,7 @@ namespace MytraRepository.Migrations
                         column: x => x.OrderId,
                         principalTable: "Order",
                         principalColumn: "OrderId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_OrderDetail_Service_ServiceId",
                         column: x => x.ServiceId,

@@ -15,5 +15,6 @@ namespace MytraModel.Models
         public Location Location { get; set; }
         public string BuildingName { get; set; }
         public string Description { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
     }
 }
