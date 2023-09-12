@@ -51,7 +51,6 @@ namespace MytraApp.Controllers
             }
             
         }
-
         [HttpGet("GetServices")]
         public async Task<ActionResult<Service>> GetServices([FromQuery] GetServicesQuery getServicesQuery)
         {

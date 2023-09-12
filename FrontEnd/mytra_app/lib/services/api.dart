@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/location_model.dart';
 import '../models/services_model.dart';
 import '../models/user_login_model.dart';
 
@@ -72,8 +73,27 @@ class ApiCall {
       http.Response response = await http.get(
         Uri.parse("http://10.0.2.2:5039/api/User/GetServices"),
       );
+      print(response.body);
       if (response.statusCode == 200) {
-        return serviceDataFromJson(response.body);
+        return servicesDataFromJson(response.body);
+
+        //return response.statusCode;
+      } else {}
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future apiGetLocations() async {
+    try {
+      http.Response response = await http.get(
+        Uri.parse("http://10.0.2.2:5039/api/User/GetLocations"),
+      );
+      print(response.body);
+      if (response.statusCode == 200) {
+        return locationDataFromJson(response.body);
+
+        //return response.statusCode;
       } else {}
     } catch (e) {
       log(e.toString());

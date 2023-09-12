@@ -1,24 +1,25 @@
 // To parse this JSON data, do
 //
-//     final serviceData = serviceDataFromJson(jsonString);
+//     final servicesData = servicesDataFromJson(jsonString);
 
 import 'dart:convert';
 
-ServiceData serviceDataFromJson(String str) =>
-    ServiceData.fromJson(json.decode(str));
+List<ServicesData> servicesDataFromJson(String str) => List<ServicesData>.from(
+    json.decode(str).map((x) => ServicesData.fromJson(x)));
 
-String serviceDataToJson(ServiceData data) => json.encode(data.toJson());
+String servicesDataToJson(List<ServicesData> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class ServiceData {
+class ServicesData {
   int? serviceId;
   String? serviceName;
 
-  ServiceData({
+  ServicesData({
     this.serviceId,
     this.serviceName,
   });
 
-  factory ServiceData.fromJson(Map<String, dynamic> json) => ServiceData(
+  factory ServicesData.fromJson(Map<String, dynamic> json) => ServicesData(
         serviceId: json["serviceId"],
         serviceName: json["serviceName"],
       );
