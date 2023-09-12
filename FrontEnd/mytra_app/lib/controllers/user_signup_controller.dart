@@ -1,26 +1,29 @@
 import 'package:get/get.dart';
 
-import '../models/user_login_model.dart';
-import '../models/user_signup_model.dart';
 import '../services/api.dart';
 
 class UserSignUpController extends GetxController {
-  Rx userSignUp = UserSignUp().obs;
-  RxBool isLoadingS = true.obs;
+  // Rx userSignUp = UserSignUp().obs;
+  RxBool isLoadingS = false.obs;
 
-  void controllerUserSignUp(
+  Future<bool> controllerUserSignUp(
       String userName, String mailId, String password) async {
+    isLoadingS(true);
     var x = await ApiCall().apiUserSignUp(userName, mailId, password);
-    userSignUp(x);
     isLoadingS(false);
+    return x;
   }
 
-  Rx userLogin = UserLogin().obs;
-  RxBool isLoadingL = true.obs;
+  // RxBool userLogin = UserLogin().obs;
+  RxBool isLoadingL = false.obs; //true
 
-  Future<void> controllerUserLogin(String mailId, String password) async {
+  Future<bool> controllerUserLogin(String mailId, String password) async {
+    isLoadingL(true);
+
     var x = await ApiCall().apiUserLogin(mailId, password);
-    userLogin(x);
+    // userLogin(x);
     isLoadingL(false);
+
+    return x;
   }
 }
