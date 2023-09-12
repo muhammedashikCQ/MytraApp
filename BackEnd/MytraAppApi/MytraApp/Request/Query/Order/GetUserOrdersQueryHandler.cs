@@ -30,7 +30,7 @@ namespace MytraApp.Request.Query.Order
                     Service = x.OrderDetails.Select(y => y.Service).ToList(),
                     BuildingName = x.BuildingName,
                     Description = x.Description,
-                }).ToListAsync(cancellationToken: cancellationToken);
+                }).ToListAsync(cancellationToken);
         }
     }
 }
