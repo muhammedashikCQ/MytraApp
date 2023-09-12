@@ -41,8 +41,7 @@ namespace MytraApp.Request.Command.Order.AddOrderCommand
             {
                 order.UserId = (int)command.UserId;
             }
-            else throw new Exception("Please select a location");
-
+            else throw new Exception("UserId not received");
 
             if (command.LocationId is not null)
             {
@@ -50,16 +49,21 @@ namespace MytraApp.Request.Command.Order.AddOrderCommand
             }
             else throw new Exception("Please select a location");
             await context.Order.AddAsync(order);
-            var orderdetails =  command.ServiceId.Select(x =>
+            
+            if(command.ServiceId is not null)
             {
-                return new Models.OrderDetail
+                var orderdetails = command.ServiceId.Select(x =>
                 {
-                    Order = order,
-                    ServiceId = x
-                };
+                    return new Models.OrderDetail
+                    {
+                        Order = order,
+                        ServiceId = x
+                    };
+                }
+                );
+                await context.OrderDetail.AddRangeAsync(orderdetails);
             }
-            );
-            await context.OrderDetail.AddRangeAsync(orderdetails);
+            else throw new Exception("Service id not received");
             await context.SaveChangesAsync(cancellationToken);
 
             return "success";

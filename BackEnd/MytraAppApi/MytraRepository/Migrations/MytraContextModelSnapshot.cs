@@ -213,9 +213,9 @@ namespace MytraRepository.Migrations
             modelBuilder.Entity("MytraModel.Models.OrderDetail", b =>
                 {
                     b.HasOne("MytraModel.Models.Order", "Order")
-                        .WithMany()
+                        .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MytraModel.Models.Service", "Service")
@@ -227,6 +227,11 @@ namespace MytraRepository.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Service");
+                });
+
+            modelBuilder.Entity("MytraModel.Models.Order", b =>
+                {
+                    b.Navigation("OrderDetails");
                 });
 #pragma warning restore 612, 618
         }
