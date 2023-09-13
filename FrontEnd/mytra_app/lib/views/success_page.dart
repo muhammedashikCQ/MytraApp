@@ -22,10 +22,11 @@ class SuccessPage extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.fromLTRB(30, 240, 0, 0),
-                        child: SvgPicture.asset("assets/images/flower.svg"),
+                        child:
+                            SvgPicture.asset("assets/images/trophyicon2.svg"),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(81, 300, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(30, 300, 30, 0),
                         child: SvgPicture.asset("assets/images/trophyicon.svg"),
                       ),
                     ],
