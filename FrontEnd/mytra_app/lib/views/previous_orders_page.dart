@@ -96,13 +96,13 @@ class _PreviousOrdersPageState extends State<PreviousOrdersPage> {
                       topLeft: Radius.circular(30)),
                   color: Colors.white,
                 ),
-                margin: const EdgeInsets.fromLTRB(0, 110, 15, 0),
-                padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                margin: const EdgeInsets.fromLTRB(0, 110, 15, 10),
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: ListView.builder(
                     itemCount: previousOrderController.data.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 8),
+                      return Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                         child: Card(
                           color: const Color.fromARGB(255, 255, 255, 255),
                           child: Column(
