@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => homePageController.isLoadingH.value
+    return Obx(() => homePageController.isLoading.value
         ? const Center(child: CircularProgressIndicator())
         : Scaffold(
             extendBodyBehindAppBar: true,
@@ -227,7 +227,7 @@ class _HomePageState extends State<HomePage> {
                                 crossAxisSpacing: 8.0,
                               ),
                               padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                              itemCount: homePageController.data.length + 1,
+                              itemCount: headerList.length,
                               itemBuilder: (BuildContext ctx, index) {
                                 return InkWell(
                                   onTap: () {
@@ -253,7 +253,9 @@ class _HomePageState extends State<HomePage> {
                                             serviceId: homePageController
                                                 .data[index].serviceId!));
                                       case 5:
-                                        Get.to(const RequestPage(serviceId: 6));
+                                        Get.to(RequestPage(
+                                            serviceId: homePageController
+                                                .data[index].serviceId!));
                                     }
                                   },
                                   child: DemoContainer(

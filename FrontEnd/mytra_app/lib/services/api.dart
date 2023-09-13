@@ -77,11 +77,7 @@ class ApiCall {
       );
       if (response.statusCode == 200) {
         return servicesDataFromJson(response.body);
-      } else {
-        String message = response.body;
-        Get.snackbar("ERROR", message, backgroundColor: Colors.redAccent);
-        return false;
-      }
+      } else {}
     } catch (e) {
       log(e.toString());
     }
@@ -94,11 +90,7 @@ class ApiCall {
       );
       if (response.statusCode == 200) {
         return locationDataFromJson(response.body);
-      } else {
-        String message = response.body;
-        Get.snackbar("ERROR", message, backgroundColor: Colors.redAccent);
-        return false;
-      }
+      } else {}
     } catch (e) {
       log(e.toString());
     }
@@ -121,11 +113,7 @@ class ApiCall {
       print(response.body);
       if (response.statusCode == 200) {
         return requestDataFromJson(response.body);
-      } else {
-        String message = response.body;
-        Get.snackbar("ERROR", message, backgroundColor: Colors.redAccent);
-        return false;
-      }
+      } else {}
     } catch (e) {
       log(e.toString());
     }
@@ -134,16 +122,11 @@ class ApiCall {
   Future apiGetPreviousOrders(int userId) async {
     try {
       http.Response response = await http.get(
-        Uri.parse("http://10.0.2.2:5039/api/User/GetUserOrders?UserId=$userId"),
+        Uri.parse("http://10.0.2.2:5039/api/User/GetUserOrders?$userId"),
       );
-      print(response.body);
       if (response.statusCode == 200) {
         return previousOrdersDataFromJson(response.body);
-      } else {
-        String message = response.body;
-        Get.snackbar("ERROR", message, backgroundColor: Colors.redAccent);
-        return false;
-      }
+      } else {}
     } catch (e) {
       log(e.toString());
     }
