@@ -28,12 +28,13 @@ class _PreviousOrdersPageState extends State<PreviousOrdersPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => previousOrderController.isLoading.value
+    return Obx(() => previousOrderController.isLoadingP.value
         ? const Center(child: CircularProgressIndicator())
         : Scaffold(
             extendBodyBehindAppBar: true,
             backgroundColor: const Color.fromARGB(255, 240, 240, 240),
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               backgroundColor: Colors.transparent,
               title: Row(
                 children: [
@@ -98,150 +99,159 @@ class _PreviousOrdersPageState extends State<PreviousOrdersPage> {
                 margin: const EdgeInsets.fromLTRB(0, 110, 15, 0),
                 padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
                 child: ListView.builder(
-                    itemCount: 5,
+                    itemCount: previousOrderController.data.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 50),
-                        child: Card(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Services",
-                                style: GoogleFonts.heebo(
-                                    textStyle: const TextStyle(
-                                  color: Color(0xff777777),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal,
-                                )),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                height: 55,
-                                width: 380,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0xff777777))),
-                                child: const Text(""
-                                    // previousOrderController.data[index].service,
-                                    // .map((e) => {e.serviceName}).,
-                                    // textAlign: TextAlign.justify,
-                                    // style: GoogleFonts.heebo(
-                                    //     textStyle: const TextStyle(
-                                    //   color: Color(0xff777777),
-                                    //   fontSize: 13,
-                                    //   fontWeight: FontWeight.w400,
-                                    //   fontStyle: FontStyle.normal,
-                                    // ))
-                                    ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Text(
-                                "Location",
-                                style: GoogleFonts.heebo(
-                                    textStyle: const TextStyle(
-                                  color: Color(0xff777777),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal,
-                                )),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                height: 55,
-                                width: 380,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0xff777777))),
-                                child: Text("Location",
-                                    textAlign: TextAlign.justify,
-                                    style: GoogleFonts.heebo(
-                                        textStyle: const TextStyle(
-                                      color: Color(0xff777777),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400,
-                                      fontStyle: FontStyle.normal,
-                                    ))),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Text(
-                                "Building",
-                                style: GoogleFonts.heebo(
-                                    textStyle: const TextStyle(
-                                  color: Color(0xff777777),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal,
-                                )),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                height: 55,
-                                width: 380,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0xff777777))),
-                                child: Text("Building",
-                                    textAlign: TextAlign.justify,
-                                    style: GoogleFonts.heebo(
-                                        textStyle: const TextStyle(
-                                      color: Color(0xff777777),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400,
-                                      fontStyle: FontStyle.normal,
-                                    ))),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Text(
-                                "Description",
-                                style: GoogleFonts.heebo(
-                                    textStyle: const TextStyle(
-                                  color: Color(0xff777777),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal,
-                                )),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                height: 55,
-                                width: 380,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                        color: const Color(0xff777777))),
-                                child: Text("Description",
-                                    textAlign: TextAlign.justify,
-                                    style: GoogleFonts.heebo(
-                                        textStyle: const TextStyle(
-                                      color: Color(0xff777777),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400,
-                                      fontStyle: FontStyle.normal,
-                                    ))),
-                              ),
-                              const SizedBox(height: 30)
-                            ],
-                          ),
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 50),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Services",
+                              style: GoogleFonts.heebo(
+                                  textStyle: const TextStyle(
+                                color: Color(0xff777777),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                fontStyle: FontStyle.normal,
+                              )),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              height: 55,
+                              width: 380,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                      color: const Color(0xff777777))),
+                              child: ListView.builder(
+                                  itemCount: previousOrderController
+                                      .data[index].service!.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index1) {
+                                    return Text(
+                                        previousOrderController.data[index]
+                                            .service![index1].serviceName!,
+                                        textAlign: TextAlign.justify,
+                                        style: GoogleFonts.heebo(
+                                            textStyle: const TextStyle(
+                                          color: Color(0xff777777),
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400,
+                                          fontStyle: FontStyle.normal,
+                                        )));
+                                  }),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "Location",
+                              style: GoogleFonts.heebo(
+                                  textStyle: const TextStyle(
+                                color: Color(0xff777777),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                fontStyle: FontStyle.normal,
+                              )),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              height: 55,
+                              width: 380,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                      color: const Color(0xff777777))),
+                              child: Text(
+                                  previousOrderController
+                                      .data[index].location!.locationName!,
+                                  textAlign: TextAlign.justify,
+                                  style: GoogleFonts.heebo(
+                                      textStyle: const TextStyle(
+                                    color: Color(0xff777777),
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                    fontStyle: FontStyle.normal,
+                                  ))),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "Building",
+                              style: GoogleFonts.heebo(
+                                  textStyle: const TextStyle(
+                                color: Color(0xff777777),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                fontStyle: FontStyle.normal,
+                              )),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              height: 55,
+                              width: 380,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                      color: const Color(0xff777777))),
+                              child: Text(
+                                  previousOrderController
+                                      .data[index].buildingName!,
+                                  textAlign: TextAlign.justify,
+                                  style: GoogleFonts.heebo(
+                                      textStyle: const TextStyle(
+                                    color: Color(0xff777777),
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                    fontStyle: FontStyle.normal,
+                                  ))),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "Description",
+                              style: GoogleFonts.heebo(
+                                  textStyle: const TextStyle(
+                                color: Color(0xff777777),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                fontStyle: FontStyle.normal,
+                              )),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              height: 55,
+                              width: 380,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                      color: const Color(0xff777777))),
+                              child: Text(
+                                  previousOrderController
+                                      .data[index].description!,
+                                  textAlign: TextAlign.justify,
+                                  style: GoogleFonts.heebo(
+                                      textStyle: const TextStyle(
+                                    color: Color(0xff777777),
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                    fontStyle: FontStyle.normal,
+                                  ))),
+                            ),
+                            const SizedBox(height: 30)
+                          ],
                         ),
                       );
                     }),
