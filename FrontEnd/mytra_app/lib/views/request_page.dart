@@ -20,8 +20,6 @@ class RequestPage extends StatefulWidget {
 String? selectedValue;
 List<DropdownMenuItem<String>> locations = [];
 List selectedservices = [];
-List<int> selectedServiceId = [];
-List newservicelist = [];
 List services = [];
 
 class _RequestPageState extends State<RequestPage> {
@@ -33,8 +31,6 @@ class _RequestPageState extends State<RequestPage> {
   @override
   void initState() {
     super.initState();
-    selectedValue = null;
-    selectedservices = [];
     serviceRequestController.loadData();
   }
 
@@ -59,6 +55,20 @@ class _RequestPageState extends State<RequestPage> {
       //     ];
       //   }
       // }
+      var selectedService = serviceRequestController.data.firstWhere(
+        (element) => element.serviceId == widget.serviceId,
+        orElse: () => ServicesData(),
+      );
+      if (selectedService.serviceId != null) {
+        selectedservices = [
+          {
+            "id": selectedService.serviceId,
+            "label": selectedService.serviceName,
+          }
+        ];
+      }
+
+      print(selectedservices);
 
       services = serviceRequestController.data
           .map((e) => {
@@ -66,24 +76,6 @@ class _RequestPageState extends State<RequestPage> {
                 "label": e.serviceName,
               })
           .toList();
-
-      var selectedService = serviceRequestController.data.firstWhere(
-        (element) => element.serviceId == widget.serviceId,
-        orElse: () => ServicesData(),
-      );
-      if (selectedService.serviceId != null) {
-        {
-          selectedservices = [
-            {
-              "id": selectedService.serviceId,
-              "label": selectedService.serviceName,
-            }
-          ];
-          newservicelist = selectedservices.map((e) => e['id']).toList();
-          selectedServiceId = List<int>.from(newservicelist);
-          print(selectedServiceId);
-        }
-      }
       locations = serviceRequestController.locationdata
           .map<DropdownMenuItem<String>>((element) => DropdownMenuItem(
               value: element.locationId.toString(),
@@ -198,11 +190,10 @@ class _RequestPageState extends State<RequestPage> {
                       initiallySelected: selectedservices,
                       onChange: (List newList) {
                         setState(() {
-                          selectedservices =
-                              newList.map((e) => e['id']).toList();
-                          selectedServiceId = List<int>.from(selectedservices);
+                          // selectedservices =
+                          //     newList.map((e) => e['id']).toList();
                         });
-                        print(selectedServiceId);
+                        print(selectedservices);
                       },
                     ),
                   ),
@@ -368,7 +359,7 @@ class _RequestPageState extends State<RequestPage> {
                                 });
                           } else {
                             serviceRequestController.postRequest(
-                                selectedServiceId,
+                                List<int>.from(selectedservices),
                                 int.parse(idBox.get("userId").toString()),
                                 int.parse(selectedValue!),
                                 buildingnamecontroller.text,

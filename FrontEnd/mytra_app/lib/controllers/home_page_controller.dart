@@ -6,11 +6,12 @@ import '../services/api.dart';
 class HomePageController extends GetxController {
   RxList<ServicesData> data = <ServicesData>[].obs;
 
-  RxBool isLoadingH = true.obs;
+  RxBool isLoading = true.obs;
 
   void getservicesforhome() async {
+    isLoading(true);
     var x = await ApiCall().apiGetServices();
     data(x);
-    isLoadingH(false);
+    isLoading(false);
   }
 }
