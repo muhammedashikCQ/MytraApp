@@ -7,6 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/location_model.dart';
+import '../models/preious_order_model.dart';
 import '../models/request_model.dart';
 import '../models/services_model.dart';
 import '../models/user_login_model.dart';
@@ -112,6 +113,19 @@ class ApiCall {
       print(response.body);
       if (response.statusCode == 200) {
         return requestDataFromJson(response.body);
+      } else {}
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future apiGetPreviousOrders(int userId) async {
+    try {
+      http.Response response = await http.get(
+        Uri.parse("http://10.0.2.2:5039/api/User/GetUserOrders?$userId"),
+      );
+      if (response.statusCode == 200) {
+        return previousOrdersDataFromJson(response.body);
       } else {}
     } catch (e) {
       log(e.toString());
