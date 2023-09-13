@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 
 import '../controllers/previous_orderpage_controller.dart';
 import 'bottom_demo_container.dart';
@@ -15,8 +16,16 @@ class PreviousOrdersPage extends StatefulWidget {
 }
 
 class _PreviousOrdersPageState extends State<PreviousOrdersPage> {
+  static Box<String> idBox = Hive.box<String>("idBox");
   final PreviousOrderController previousOrderController =
       Get.put(PreviousOrderController());
+  @override
+  void initState() {
+    super.initState();
+    previousOrderController
+        .controllerGetPreviousOrders(int.parse(idBox.get('userId').toString()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Obx(() => previousOrderController.isLoading.value
@@ -118,15 +127,18 @@ class _PreviousOrdersPageState extends State<PreviousOrdersPage> {
                                     borderRadius: BorderRadius.circular(5),
                                     border: Border.all(
                                         color: const Color(0xff777777))),
-                                child: Text("",
-                                    textAlign: TextAlign.justify,
-                                    style: GoogleFonts.heebo(
-                                        textStyle: const TextStyle(
-                                      color: Color(0xff777777),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400,
-                                      fontStyle: FontStyle.normal,
-                                    ))),
+                                child: const Text(""
+                                    // previousOrderController.data[index].service,
+                                    // .map((e) => {e.serviceName}).,
+                                    // textAlign: TextAlign.justify,
+                                    // style: GoogleFonts.heebo(
+                                    //     textStyle: const TextStyle(
+                                    //   color: Color(0xff777777),
+                                    //   fontSize: 13,
+                                    //   fontWeight: FontWeight.w400,
+                                    //   fontStyle: FontStyle.normal,
+                                    // ))
+                                    ),
                               ),
                               const SizedBox(
                                 height: 20,

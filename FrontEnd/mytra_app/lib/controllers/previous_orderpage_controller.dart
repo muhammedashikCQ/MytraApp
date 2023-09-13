@@ -8,7 +8,7 @@ class PreviousOrderController extends GetxController {
 
   RxBool isLoading = true.obs;
 
-  Future<void> apiGetPreviousOrders(int userId) async {
+  Future<void> controllerGetPreviousOrders(int userId) async {
     isLoading(true);
     var x = await ApiCall().apiGetPreviousOrders(userId);
     data(x);
