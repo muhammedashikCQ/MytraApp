@@ -10,7 +10,7 @@ import 'package:mytra_app/views/success_page.dart';
 import '../controllers/service_request_controller.dart';
 
 class RequestPage extends StatefulWidget {
-  final int serviceId;
+  final int? serviceId;
   const RequestPage({super.key, required this.serviceId});
 
   @override
@@ -20,8 +20,8 @@ class RequestPage extends StatefulWidget {
 String? selectedValue;
 List<DropdownMenuItem<String>> locations = [];
 List selectedservices = [];
-List<int> selectedServiceId = [];
-List newservicelist = [];
+List<int> newservicelist = [];
+// List newservicelist = [];
 List services = [];
 
 class _RequestPageState extends State<RequestPage> {
@@ -44,54 +44,36 @@ class _RequestPageState extends State<RequestPage> {
       if (serviceRequestController.isLoading.value) {
         return const Center(child: CircularProgressIndicator());
       }
-
-      // for (var element in serviceRequestController.data) {
-      //   if (element.serviceId == widget.serviceId) {
-      //     selectedservices = [
-      //       {
-      //         "id": serviceRequestController.data
-      //             .firstWhere((e) => e.serviceId == widget.serviceId)
-      //             .serviceId,
-      //         "label": serviceRequestController.data
-      //             .firstWhere((e) => e.serviceId == widget.serviceId)
-      //             .serviceName
-      //       }
-      //     ];
-      //   }
-      // }
-
       services = serviceRequestController.data
           .map((e) => {
                 "id": e.serviceId,
                 "label": e.serviceName,
               })
           .toList();
-
-      var selectedService = serviceRequestController.data.firstWhere(
-        (element) => element.serviceId == widget.serviceId,
-        orElse: () => ServicesData(),
-      );
-      if (selectedService.serviceId != null) {
-        {
+      if (widget.serviceId != null) {
+        if (widget.serviceId! <= serviceRequestController.data.length) {
+          var selectedService = serviceRequestController.data.firstWhere(
+            (element) => element.serviceId == widget.serviceId,
+            orElse: () => ServicesData(),
+          );
           selectedservices = [
             {
               "id": selectedService.serviceId,
               "label": selectedService.serviceName,
             }
           ];
-          newservicelist = selectedservices.map((e) => e['id']).toList();
-          selectedServiceId = List<int>.from(newservicelist);
-          print(selectedServiceId);
+        } else {
+          selectedservices = services;
         }
+        newservicelist =
+            List<int>.from(selectedservices.map((e) => e['id']).toList());
+        //newservicelist = List<int>.from(newservicelist);
       }
       locations = serviceRequestController.locationdata
           .map<DropdownMenuItem<String>>((element) => DropdownMenuItem(
               value: element.locationId.toString(),
               child: Text(element.locationName.toString())))
           .toList();
-
-      // print(locations);
-      //  print(services);
       return Scaffold(
         extendBodyBehindAppBar: true,
         backgroundColor: const Color.fromARGB(255, 240, 240, 240),
@@ -200,9 +182,9 @@ class _RequestPageState extends State<RequestPage> {
                         setState(() {
                           selectedservices =
                               newList.map((e) => e['id']).toList();
-                          selectedServiceId = List<int>.from(selectedservices);
+                          newservicelist = List<int>.from(selectedservices);
                         });
-                        print(selectedServiceId);
+                        print(newservicelist);
                       },
                     ),
                   ),
@@ -368,7 +350,7 @@ class _RequestPageState extends State<RequestPage> {
                                 });
                           } else {
                             serviceRequestController.postRequest(
-                                selectedServiceId,
+                                newservicelist,
                                 int.parse(idBox.get("userId").toString()),
                                 int.parse(selectedValue!),
                                 buildingnamecontroller.text,

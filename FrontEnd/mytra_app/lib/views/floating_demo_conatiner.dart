@@ -13,8 +13,7 @@ class FloatingDemoContainer extends StatelessWidget {
       child: FloatingActionButton(
         onPressed: () {
           Get.to(const RequestPage(
-            serviceId: 0,
-            //serviceId: [0],
+            serviceId: null,
           ));
         },
         foregroundColor: Colors.white,
