@@ -22,8 +22,9 @@ class _SplashPageState extends State<SplashPage> {
 
   initHiveAndNavigate() async {
     await Hive.openBox<String>("idBox");
+
     String? userId = idBox.get("userId");
-    // print("User ID from Hive: $userId");
+
     if (userId != null) {
       navigateToHome();
     } else {
