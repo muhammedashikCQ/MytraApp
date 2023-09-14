@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mytra_app/views/home_page.dart';
 
 class SuccessPage extends StatelessWidget {
   const SuccessPage({super.key});
@@ -20,11 +19,6 @@ class SuccessPage extends StatelessWidget {
                 children: [
                   Stack(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(30, 240, 0, 0),
-                        child:
-                            SvgPicture.asset("assets/images/trophyicon2.svg"),
-                      ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(30, 300, 30, 0),
                         child: SvgPicture.asset("assets/images/trophyicon.svg"),
@@ -74,7 +68,8 @@ class SuccessPage extends StatelessWidget {
                     height: 60,
                     child: TextButton(
                         onPressed: () {
-                          Get.to(const HomePage());
+                          Get.back();
+                          Get.back();
                         },
                         child: Text('Done',
                             style: GoogleFonts.heebo(

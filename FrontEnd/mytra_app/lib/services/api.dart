@@ -8,7 +8,6 @@ import 'package:http/http.dart' as http;
 
 import '../models/location_model.dart';
 import '../models/preious_order_model.dart';
-import '../models/request_model.dart';
 import '../models/services_model.dart';
 import '../models/user_login_model.dart';
 
@@ -84,6 +83,7 @@ class ApiCall {
       }
     } catch (e) {
       log(e.toString());
+      return false;
     }
   }
 
@@ -101,10 +101,11 @@ class ApiCall {
       }
     } catch (e) {
       log(e.toString());
+      return false;
     }
   }
 
-  Future apiPostRequest(List<int> serviceId, int userId, int locationId,
+  Future<bool> apiPostRequest(List<int> serviceId, int userId, int locationId,
       String buildingName, String description) async {
     try {
       http.Response response = await http.post(
@@ -120,7 +121,7 @@ class ApiCall {
       );
       print(response.body);
       if (response.statusCode == 200) {
-        return requestDataFromJson(response.body);
+        return true;
       } else {
         String message = response.body;
         Get.snackbar("ERROR", message, backgroundColor: Colors.redAccent);
@@ -128,6 +129,7 @@ class ApiCall {
       }
     } catch (e) {
       log(e.toString());
+      return false;
     }
   }
 
@@ -146,6 +148,7 @@ class ApiCall {
       }
     } catch (e) {
       log(e.toString());
+      return false;
     }
   }
 }

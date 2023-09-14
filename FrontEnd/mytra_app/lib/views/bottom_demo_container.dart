@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:mytra_app/views/home_page.dart';
 import 'package:mytra_app/views/previous_orders_page.dart';
 
 class BottomDemoContainer extends StatelessWidget {
@@ -17,7 +16,7 @@ class BottomDemoContainer extends StatelessWidget {
         children: [
           InkWell(
               onTap: () {
-                Get.to(const HomePage());
+                Get.back();
               },
               child: SvgPicture.asset("assets/images/bottom_app_bar_home.svg")),
           const SizedBox(width: 18),
