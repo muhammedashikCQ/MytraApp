@@ -5,9 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:multiselect_dropdown_flutter/multiselect_dropdown_flutter.dart';
 import 'package:mytra_app/models/services_model.dart';
-import 'package:mytra_app/views/success_page.dart';
 
 import '../controllers/service_request_controller.dart';
+import 'success_page.dart';
 
 class RequestPage extends StatefulWidget {
   final int? serviceId;
@@ -75,48 +75,34 @@ class _RequestPageState extends State<RequestPage> {
               child: Text(element.locationName.toString())))
           .toList();
       return Scaffold(
+        // resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
         backgroundColor: const Color.fromARGB(255, 240, 240, 240),
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+          scrolledUnderElevation: 0,
           backgroundColor: Colors.transparent,
-          title: Row(
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(
-                  "assets/images/leadingicon1.svg",
-                  width: 60,
-                  height: 60,
-                ),
-              ),
+              Text("New Maintenance Request",
+                  style: GoogleFonts.heebo(
+                      textStyle: const TextStyle(
+                    color: Color(0xff464646),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    fontStyle: FontStyle.normal,
+                  ))),
               const SizedBox(
-                width: 10,
+                height: 5,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("New Maintenance Request",
-                      style: GoogleFonts.heebo(
-                          textStyle: const TextStyle(
-                        color: Color(0xff464646),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        fontStyle: FontStyle.normal,
-                      ))),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text("New Jersey 45326",
-                      style: GoogleFonts.heebo(
-                          textStyle: const TextStyle(
-                        color: Color(0xff966C00),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                      )))
-                ],
-              )
+              Text("New Jersey 45326",
+                  style: GoogleFonts.heebo(
+                      textStyle: const TextStyle(
+                    color: Color(0xff966C00),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.normal,
+                  )))
             ],
           ),
           toolbarHeight: 80,
@@ -184,7 +170,7 @@ class _RequestPageState extends State<RequestPage> {
                               newList.map((e) => e['id']).toList();
                           newservicelist = List<int>.from(selectedservices);
                         });
-                        print(newservicelist);
+                        // print(newservicelist);
                       },
                     ),
                   ),
@@ -278,7 +264,7 @@ class _RequestPageState extends State<RequestPage> {
                           setState(() {
                             selectedValue = newValue!;
                           });
-                          print(selectedValue);
+                          // print(selectedValue);
                         },
                         items: locations,
                       )),
@@ -355,7 +341,11 @@ class _RequestPageState extends State<RequestPage> {
                                 int.parse(selectedValue!),
                                 buildingnamecontroller.text,
                                 descriptioncontroller.text);
-                            Get.to(const SuccessPage());
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return const SuccessPage();
+                                });
                           }
                         },
                         child: Text('Submit',

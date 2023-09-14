@@ -6,9 +6,10 @@ import '../services/api.dart';
 class PreviousOrderController extends GetxController {
   RxList<PreviousOrdersData> data = <PreviousOrdersData>[].obs;
 
-  RxBool isLoadingP = true.obs;
+  RxBool isLoadingP = false.obs;
 
-  Future<void> controllerGetPreviousOrders(int userId) async {
+  Future controllerGetPreviousOrders(int userId) async {
+    isLoadingP(true);
     var x = await ApiCall().apiGetPreviousOrders(userId);
     data(x);
     isLoadingP(false);

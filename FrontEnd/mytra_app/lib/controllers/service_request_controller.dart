@@ -10,8 +10,8 @@ class ServiceRequestController extends GetxController {
   RxList<LocationData> locationdata = <LocationData>[].obs;
   Rx<RequestData> requestdata = RequestData().obs;
 
-  RxBool isLoadingS = true.obs;
-  RxBool isLoading = true.obs;
+  // RxBool isLoadingS = false.obs;
+  RxBool isLoading = false.obs;
 
   Future<void> getservices() async {
     var x = await ApiCall().apiGetServices();
@@ -37,7 +37,7 @@ class ServiceRequestController extends GetxController {
     isLoadingR(true);
     var x = await ApiCall().apiPostRequest(
         serviceId, userId, locationId, buildingName, description);
-    requestdata(x);
+    // requestdata(x);
     isLoadingR(false);
     return x;
   }

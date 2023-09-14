@@ -7,7 +7,6 @@ import 'package:mytra_app/controllers/home_page_controller.dart';
 import 'package:mytra_app/views/bottom_demo_container.dart';
 import 'package:mytra_app/views/floating_demo_conatiner.dart';
 import 'package:mytra_app/views/request_page.dart';
-import 'package:mytra_app/views/sign_up.dart';
 
 import '../widgets/bottom_container.dart';
 import '../widgets/icon_container.dart';
@@ -104,13 +103,6 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-              actions: [
-                IconButton(
-                    onPressed: () {
-                      Get.to(const SignUpInPage());
-                    },
-                    icon: const Icon(Icons.logout))
-              ],
               toolbarHeight: 80,
             ),
 
